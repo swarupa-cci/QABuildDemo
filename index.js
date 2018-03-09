@@ -16,8 +16,6 @@ app.set('view engine', 'ejs');
 var bodyParser = require('body-parser')
 
 //logging
-
-
 app.use(morgan('combined', {stream: accessLogStream}))
 
 // parse application/x-www-form-urlencoded

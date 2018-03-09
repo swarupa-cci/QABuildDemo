@@ -1,5 +1,6 @@
 var UserService = require('../services/userservice')
 var User = require('../models/user.js');
+var Log = require('../logs.js');
 class UserController{
   
 
@@ -63,6 +64,7 @@ class UserController{
         UserService.insertUser(user, function(err,user,next){
             if(!err){
                 UserService.getUsers(function(err,users){
+                    Log.logMessage(users);
                     if(!err){
                      res.sendStatus(200);
                     }
@@ -80,6 +82,5 @@ class UserController{
 
     }
 }
-
 
 module.exports = new UserController();

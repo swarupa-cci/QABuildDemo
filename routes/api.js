@@ -10,6 +10,7 @@ var User = require('../models/user.js');
 router.get('/project', function(req, res, next) {
   Project.find(function (err, products) {
     if (err) return next(err);
+
     res.json(products);
   });
 });
@@ -18,6 +19,7 @@ router.get('/project', function(req, res, next) {
 router.get('/project:id', function(req, res, next) {
   Project.findById(req.params.id, function (err, post) {
     if (err) return next(err);
+ 
     res.json(post);
   });
 });
@@ -55,9 +57,8 @@ router.post('/login', function(req, res, next) {
   User.create(user, function (err, post) {
   if (err) return next(err);
   //res.json(post);
-
-
-  res.render('user.ejs');
+    
+     res.render('user.ejs');
 });
 });
 
