@@ -14,7 +14,10 @@ class UserService{
        
     }
 
-    getUser(id){
+    getUser(name,password,callback){
+       User.find({name:name,password:password},function(err,user){
+        callback(err,user);
+       })
 
     }
 

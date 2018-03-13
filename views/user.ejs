@@ -1,7 +1,12 @@
 <html>
-    <title>user list</title>
-    <script>userlist.js</script>
+    <title>Add User</title>
+    
     <body>
-        <h1>List Of users</h1>
+        <form action = "http://localhost:3000/api/v1/users" method = "POST">
+            User Name: <input type = "text" name = "name">  <br>
+            Password:  <input type = "text" password = "password"><br>
+            Is Admin: <input type = "checkbox" name = "isAdmin" value="1"> <br>
+            <input type = "submit" value = "Submit">
+         </form>
     </body>
 </html>

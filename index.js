@@ -34,5 +34,9 @@ app.use('/api/v1', apiRouter);
  
 var UserController = require('./controllers/UserController');
 UserController.registerRoutes(apiRouter);
+
+var LoginController = require('./controllers/LoginController');
+LoginController.registerRoutes(apiRouter);
+
 dbhelper.dbConnect()
 

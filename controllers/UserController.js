@@ -58,6 +58,7 @@ class UserController{
         var userInfo = req.body;
 
         var username = req.body.name;
+        var password = req.body.password;
         var isAdmin = req.body.ssAdmin;
         var user = new User(req.body);
 
