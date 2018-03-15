@@ -1,16 +1,19 @@
 var UserService = require('../services/userservice')
 var User = require('../models/user.js');
 var Log = require('../logs.js');
+var AuthManager = require('../AuthManager');
 class UserController{
   
-
+    
+    
     registerRoutes(router){
         this.router = router;
         if(this.router != undefined){
-            this.router.get('/users', this.getUsers.bind(this));
-            this.router.get('/users/:id', this.getSingleUser.bind(this));
-            this.router.post('/users', this.postUser.bind(this));
-            this.router.put('/users/:id', this.putUser.bind(this));
+            this.router.get('/users', AuthManager.auth(), this.getUsers.bind(this));
+            this.router.get('/users/:id', AuthManager.auth(),this.getSingleUser.bind(this));
+            this.router.post('/users', AuthManager.auth(), this.postUser.bind(this));
+            this.router.put('/users/:id', AuthManager.auth(),this.putUser.bind(this));
+            
         }
        
     }
@@ -59,7 +62,7 @@ class UserController{
 
         var username = req.body.name;
         var password = req.body.password;
-        var isAdmin = req.body.ssAdmin;
+        var isAdmin = req.body.isAdmin;
         var user = new User(req.body);
 
         UserService.insertUser(user, function(err,user,next){

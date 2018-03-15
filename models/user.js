@@ -15,7 +15,12 @@ var userschema = new Schema ({
     isAdmin:{
        type:Boolean,
        required:true
+    },
+    sessionId:{
+        type:String,
+        
     }
+
 });
 
  var User = mongoose.model("User",userschema);

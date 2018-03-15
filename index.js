@@ -5,6 +5,10 @@ var morgan = require('morgan')
 var path = require('path')
 var fs = require('fs')
 
+
+//session management
+var session = require('express-session');
+
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
 
@@ -12,6 +16,13 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 var app = express();
 app.set('views','views');
 app.set('view engine', 'ejs');
+
+//session management
+app.use(session({
+    secret: 'd37a13ec-a916-4f20-9f81-b6270b021fe0',
+    resave: true,
+    saveUninitialized: true
+}));
 
 var bodyParser = require('body-parser')
 
@@ -39,4 +50,5 @@ var LoginController = require('./controllers/LoginController');
 LoginController.registerRoutes(apiRouter);
 
 dbhelper.dbConnect()
+
 

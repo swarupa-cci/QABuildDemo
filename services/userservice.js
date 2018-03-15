@@ -28,8 +28,10 @@ class UserService{
          });
     }
 
-    updateUser(user){
-
+    updateUser(user,value,callback){
+        User.update({name: user.name, password: user.password }, {$set: {sessionId: value}},function(err,user){
+             callback(err,user);
+        });
     }
 }
 
